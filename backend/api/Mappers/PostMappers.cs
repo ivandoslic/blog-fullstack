@@ -15,7 +15,7 @@ namespace api.Mappers
             {
                 Id = post.Id,
                 Content = post.Content,
-                Tags = post.Tags,
+                // Tags = post.Tags,
                 Title = post.Title
             };
         }

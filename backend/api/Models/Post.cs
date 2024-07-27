@@ -15,11 +15,11 @@ namespace api.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime();
         public DateTime UpdatedAt { get; set; }
         public bool IsDraft { get; set; } = true;
-        
-        // TODO: Add when user management and authentication is handled:
-        // public string AuthorId = String.Empty;
+
+        public string BlogUserId { get; set; }
+        public BlogUser BlogUser { get; set; }
 
         public List<Comment> Comments { get; set; } = new List<Comment>();
-        public List<Tag> Tags { get; set; } = new List<Tag>();
+        public List<PostTag> PostTags { get; set; } = new List<PostTag>();
     }
 }

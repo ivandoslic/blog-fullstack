@@ -11,10 +11,10 @@ namespace api.Models
     {
         public int Id { get; set; }
         public string Content { get; set; } = String.Empty;
-        public DateTime CreatedAt = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        // TODO: Add when user management and authentication is handled:
-        // public string AuthorId = String.Empty;
+        public string BlogUserId { get; set; } = String.Empty;
+        public BlogUser BlogUser { get; set; }
         
         public int? PostId { get; set; }
         public Post? Post { get; set; }
