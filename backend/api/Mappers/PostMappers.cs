@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Comments;
 using api.Dtos.Posts;
 using api.Models;
 
@@ -15,8 +16,37 @@ namespace api.Mappers
             {
                 Id = post.Id,
                 Content = post.Content,
-                // Tags = post.Tags,
-                Title = post.Title
+                Author = {
+                    UserId = post.BlogUser.Id,
+                    UserName = post.BlogUser.UserName ?? "unknown"
+                },
+                Title = post.Title,
+                CreatedAt = post.CreatedAt,
+                UpdatedAt = post.UpdatedAt,
+                Tags = post.PostTags.Select(pt => pt.Tag.Name).ToList(),
+                Comments = post.Comments.Select(c => c.ToCommentDto()).ToList()
+            };
+        }
+
+        public static CommentDto ToCommentDto(this Comment comment)
+        {
+            return new CommentDto
+            {
+                Id = comment.Id,
+                Content = comment.Content,
+                CreatedAt = comment.CreatedAt,
+                UserName = comment.BlogUser.UserName ?? "unknown"
+            };
+        }
+
+        public static Comment CreateDtoToComment(this CreateCommentDto createCommentDto)
+        {
+            return new Comment
+            {
+                BlogUserId = createCommentDto.BlogUserId,
+                Content = createCommentDto.Content,
+                PostId = createCommentDto.PostId,
+                CreatedAt = DateTime.Now.ToUniversalTime()
             };
         }
 
