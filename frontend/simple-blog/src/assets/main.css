@@ -1,35 +1,39 @@
-@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.button {
+  @apply w-full text-sm py-2 bg-black hover:bg-white active:bg-gray-100 hover:text-black text-white border border-solid border-black rounded px-2 my-4 duration-300;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.button-disabled {
+  @apply opacity-[80%]
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.textinp {
+  @apply w-full py-1 border border-solid border-gray-500 rounded px-2 my-2 transition duration-300;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.textinp-error {
+  @apply outline-none border-2 border-red-700;
+}
+
+.textinp-error::placeholder {
+  @apply text-red-700 opacity-[50%]
+}
+
+.textinp:focus {
+  @apply outline-none border-2 border-black;
+}
+
+.quick-bounce {
+  -webkit-animation-iteration-count: 4;
+  animation-iteration-count: 4;
 }

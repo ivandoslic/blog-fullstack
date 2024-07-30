@@ -32,8 +32,8 @@ namespace api.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginData.UserName.ToLower());
+            
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginData.UserName);
 
             if (user == null)
             {
