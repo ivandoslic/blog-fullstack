@@ -52,7 +52,8 @@ namespace api.Controllers
                 {
                     UserName = user.UserName,
                     Email = user.Email,
-                    Token = _tokenService.CreateToken(user)
+                    Token = _tokenService.CreateToken(user),
+                    ProfilePicture = user.ProfilePicture
                 }
             );
         }
@@ -84,7 +85,8 @@ namespace api.Controllers
                             {
                                 UserName = blogUser.UserName,
                                 Email = blogUser.Email,
-                                Token = _tokenService.CreateToken(blogUser)
+                                Token = _tokenService.CreateToken(blogUser),
+                                ProfilePicture = blogUser.ProfilePicture
                             }
                         );
                     }
